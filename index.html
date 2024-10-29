@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¡Feliz Cumpleaños, [Nombre de tu hermana]!</title>
+    <!-- Metatag para diseño responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Metatags para SEO -->
+    <meta name="description" content="Una sorpresa especial de cumpleaños para mi hermana. Celebramos este día con alegría y recuerdos inolvidables.">
+    <meta name="keywords" content="cumpleaños, sorpresa, hermana, felicitaciones, celebración, alegría, recuerdos">
+    <!-- Enlace a Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Montserrat:400,700&display=swap" rel="stylesheet">
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Menú de navegación fijo -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#mensajes">Mensaje SECRETO</a></li>
+            <li><a href="#recuerdos">Recuerdos junto</a></li>
+            <li><a href="#galeria">Galería de fotos</a></li>
+            <li><a href="#contacto">Yo</a></li>
+        </ul>
+    </nav>
+
+    <!-- Encabezado con imagen de fondo y fuegos artificiales -->
+    <header id="inicio">
+        <!-- Canvas para fuegos artificiales -->
+        <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+        <!-- Contenido del encabezado -->
+        <div class="header-content">
+            <h1>¡Feliz Cumpleaños, <span>Mafe</span>!</h1>
+            <!-- Botón para reproducir música -->
+            <button id="playMusic" aria-label="Reproducir canción de cumpleaños">🎵 Reproducir Canción</button>
+            <!-- Botón para desplazarse hacia abajo -->
+            <a href="#mensajes" class="scroll-down" aria-label="Desplazarse hacia Mensajes">⬇️</a>
+        </div>
+    </header>
+
+    <!-- Sección de frases de felicitación -->
+    <main>
+        <section id="mensajes" class="messages">
+            <p>Que este día esté lleno de <span>alegría</span> y momentos <span>inolvidables</span>.</p>
+            <p>Gracias por ser la <span>mejor hermana</span> del mundo.</p>
+            <p>¡Te Extraño <span>DEMASIADO</span>!</p>
+            <!-- Botón de mensaje sorpresa -->
+            <button id="surpriseButton" aria-label="Mostrar mensaje sorpresa">🎁 Mensaje Sorpresa</button>
+        </section>
+
+        <!-- Sección de recuerdos -->
+        <section id="recuerdos" class="memories">
+            <h2>Nuestros Recuerdos</h2>
+            <div class="memory-grid">
+                <!-- Reemplaza 'recuerdo1.jpg', etc., y añade tus descripciones -->
+                <div class="memory-item">
+                    <img src="recuerdo1.jpg" alt="Recuerdo 1: Cuando fuimos a EEUU">
+                    <p>Aunque me excluyo por llevar al novio, se paso muy bueno hermanita, lindos recuerdos compartiendo y divirtiendonos en familia.</p>
+                </div>
+                <div class="memory-item">
+                    <img src="recuerdo2.jpg" alt="Recuerdo 2: TIKTOS FAMOSOS">
+                    <p>Ese TIKTOK que se nos fue viral JAJAJA, no lo olvido hermana, yo si le seguia mucho el cuento para esos videos, pero ahora como extraño volver a hacer uno juntos.</p>
+                </div>
+                <div class="memory-item">
+                    <img src="recuerdo3.jpg" alt="Recuerdo 3: Viaje a Medallo">
+                    <p>Siento que fue el viaje que mas nos unio, convivimos juntos, farreamos juntos, salimos a comer juntos, no nos falto fue nada y la pasamos super bien, me acuerdo que no la deje bailar con hombres en la discoteca porque creian que era el novio jajajaj.</p>
+                </div>
+                <!-- Añade más recuerdos si lo deseas -->
+            </div>
+        </section>
+
+        <!-- Galería de fotos con carrusel -->
+        <section id="galeria" class="gallery">
+            <h2>Galería de Fotos</h2>
+            <div class="carousel" role="region" aria-label="Carrusel de fotos">
+                <!-- Reemplaza 'foto1.jpg', 'foto2.jpg', etc., con las rutas de tus imágenes -->
+                <div class="carousel-item active">
+                    <img src="foto1.jpeg" alt="Foto 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="foto2.jpeg" alt="Foto 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="foto3.jpeg" alt="Foto 3">
+                </div>
+                <!-- Puedes añadir más imágenes si lo deseas -->
+            </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control prev" aria-label="Foto anterior">⟨</button>
+            <button class="carousel-control next" aria-label="Foto siguiente">⟩</button>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <p>Con mucho cariño, <span>Tu Hermano</span></p>
+    </footer>
+
+    <!-- Modal para el mensaje sorpresa -->
+    <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="close" aria-label="Cerrar mensaje sorpresa">&times;</button>
+            <h2 id="modalTitle">¡Sorpresa!</h2>
+            <p>MARIO BROSSSSS que Dios me la bendiga mija</p>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>

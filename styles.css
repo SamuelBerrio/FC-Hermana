@@ -1,0 +1,574 @@
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes|Montserrat:400,700&display=swap');
+
+/* Variables de color */
+:root {
+    --primary-color: #e056ac; /* Rosa menos vibrante */
+    --secondary-color: #f4a7b9; /* Rosa claro suavizado */
+    --accent-color: #5a3fbf; /* Morado más suave */
+    --text-color: #ffffff;
+    --background-color: #121212;
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Great Vibes', cursive;
+}
+
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del body */
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Estilos del menú de navegación */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(18, 18, 18, 0.85);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    transition: background 0.3s, padding 0.3s;
+}
+
+nav.scrolled {
+    background: rgba(18, 18, 18, 0.95);
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: var(--primary-color);
+    outline: none;
+}
+
+/* Estilos del encabezado */
+header {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(90,63,191,0.8), rgba(244,167,185,0.8)), url('fondo.jpg') center/cover no-repeat;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18,18,18,0.6);
+}
+
+#fireworks-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Contenido del encabezado */
+.header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    padding: 0 20px;
+}
+
+header h1 {
+    font-size: 4em;
+    font-family: var(--font-secondary);
+    margin-bottom: 30px;
+    animation: fadeInDown 1s ease-out forwards;
+    letter-spacing: 2px;
+}
+
+header h1 span {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+#playMusic {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+#playMusic:hover,
+#playMusic:focus {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    outline: none;
+}
+
+.scroll-down {
+    display: inline-block;
+    margin: 40px auto 0;
+    font-size: 2.5em;
+    color: var(--text-color);
+    text-decoration: none;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down:hover,
+.scroll-down:focus {
+    color: var(--primary-color);
+    outline: none;
+}
+
+/* Animaciones */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    } 
+    40% {
+        transform: translateY(-15px);
+    } 
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos de las frases de felicitación */
+.messages {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    text-align: center;
+    position: relative;
+    color: var(--text-color);
+}
+
+.messages::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('wave-top.png') repeat-x;
+}
+
+.messages::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('wave-bottom.png') repeat-x;
+}
+
+.messages p {
+    font-size: 2em;
+    margin: 30px 0;
+    color: var(--text-color);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+}
+
+.messages p:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.messages p:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.messages p:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+.messages p span {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Botón de mensaje sorpresa */
+#surpriseButton {
+    margin-top: 40px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#surpriseButton:hover,
+#surpriseButton:focus {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    outline: none;
+}
+
+/* Sección de recuerdos */
+.memories {
+    padding: 100px 20px;
+    background-color: #1f1f1f;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.memories h2 {
+    font-size: 3em;
+    font-family: var(--font-secondary);
+    margin-bottom: 60px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.memories::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('wave-top-reverse.png') repeat-x;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.memory-item {
+    background-color: #292929;
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.memory-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    transform: skewX(-45deg);
+    transition: left 0.5s;
+}
+
+.memory-item:hover::before {
+    left: 100%;
+}
+
+.memory-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    background-color: #383838;
+}
+
+.memory-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.memory-item p {
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+/* Galería de fotos con carrusel */
+.gallery {
+    position: relative;
+    padding: 80px 20px;
+    background-color: #212121;
+    text-align: center;
+}
+
+.gallery h2 {
+    font-size: 3em;
+    font-family: var(--font-secondary);
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-item {
+    display: none;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* Controles del carrusel */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    font-size: 2em;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.3s, background 0.3s;
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+    opacity: 1;
+    transform: scale(1.1);
+    background: var(--accent-color);
+    outline: none;
+}
+
+.carousel-control.prev {
+    left: 20px;
+}
+
+.carousel-control.next {
+    right: 20px;
+}
+
+/* Estilos del pie de página */
+footer {
+    background: var(--background-color);
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-color);
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.8em;
+    font-family: var(--font-secondary);
+}
+
+footer p span {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #252525;
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn 0.5s forwards;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    font-size: 2.5em;
+    font-family: var(--font-secondary);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    outline: none;
+}
+
+/* Diseño adaptable */
+@media (max-width: 768px) {
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    header h1 {
+        font-size: 3em;
+    }
+
+    #playMusic, #surpriseButton {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .messages p {
+        font-size: 1.5em;
+    }
+
+    .memories h2,
+    .gallery h2 {
+        font-size: 2.5em;
+    }
+
+    .carousel-control {
+        font-size: 1.5em;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .messages p {
+        font-size: 1.2em;
+    }
+
+    .memories h2,
+    .gallery h2 {
+        font-size: 2em;
+    }
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+    }
+}
